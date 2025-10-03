@@ -2,21 +2,43 @@
 
 import { useEffect, useState } from "react";
 
+
+class Sparkles {
+  id: number;
+  top: string;
+  left: string;
+  size: string;
+  delay: string;
+
+  constructor(
+    id: number,
+    top: string,
+    left: string,
+    size: string,
+    delay: string
+  ) {
+    this.id = id;
+    this.top = top;
+    this.left = left;
+    this.size = size;
+    this.delay = delay;
+  }
+}
+
 const Background = () => {
-  const [sparkles, setSparkles] = useState([]);
+  const [sparkles, setSparkles] = useState([{id:0,top:"0%",left:"0%",size:"0",delay:"0s"}])
 
   useEffect(() => {
-    // Generate random sparkles
-    const count = 25; // number of stars
-    const newSparkles = Array.from({ length: count }).map((_, i) => ({
-      id: i,
-      top: `${Math.random() * 100}%`,
-      left: `${Math.random() * 100}%`,
-      size: Math.random() > 0.7 ? "w-1.5 h-1.5" : "w-1 h-1", // small variation
-      delay: `${Math.random() * 5}s`, // random animation delay
-    }));
-    setSparkles(newSparkles);
-  }, []);
+  const count: number = 25; // number of sparkles
+  const newSparkles: Sparkles[] = Array.from({ length: count }).map((_, i) => {
+    const top = `${Math.random() * 100}%`;
+    const left = `${Math.random() * 100}%`;
+    const size = Math.random() > 0.7 ? "w-1.5 h-1.5" : "w-1 h-1";
+    const delay = `${Math.random() * 5}s`;
+    return new Sparkles(i, top, left, size, delay);
+  });
+  setSparkles(newSparkles);
+}, []);
 
   return (
     <div className="absolute inset-0 bg-black overflow-hidden">

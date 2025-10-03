@@ -17,7 +17,7 @@ export default function AishaWaitlist() {
     seconds: 0,
   });
 
-  const launchDate = new Date("2025-10-30T00:00:00");
+  const launchDate: Date = new Date("2025-10-30T00:00:00");
 
   // Countdown
   useEffect(() => {
@@ -36,7 +36,7 @@ export default function AishaWaitlist() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  });
 
   // Handlers
   const handleChange = (field: string, value: string) => {
@@ -44,7 +44,7 @@ export default function AishaWaitlist() {
   };
 
   const handleSubmit = async () => {
-    var body = JSON.stringify({ username: formData.name, phone_number: formData.phone })
+    const body: string = JSON.stringify({ username: formData.name, phone_number: formData.phone })
     if (!formData.name || !formData.phone) {
     
       alert("Please fill in all fields");
@@ -159,7 +159,7 @@ export default function AishaWaitlist() {
                   value={formData.phone}
                   onChange={(e) => handleChange("phone", e.target.value)}
                   className="w-full px-4 py-3 bg-black/50 backdrop-blur-sm border border-purple-500/30 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none text-white placeholder-gray-400"
-                  placeholder="0700000000"
+                  placeholder="0712345678"
                 />
                 <button
                   onClick={handleSubmit}
@@ -173,10 +173,10 @@ export default function AishaWaitlist() {
             <div className="max-w-md mx-auto text-center py-8">
               <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4 animate-bounce" />
               <h3 className="text-2xl font-semibold text-white mb-2">
-                You're on the list!
+                You`&apos`re on the list!
               </h3>
               <p className="text-gray-300">
-                We'll notify you as soon as Aisha launches.
+                We`&apos`ll notify you as soon as Aisha launches.
               </p>
             </div>
           )}
